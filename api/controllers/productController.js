@@ -118,7 +118,6 @@ module.exports = {
     // Filter limit data
     filterLimitProduct(req, res, next) {
         const { limit } = req.body;
-        var searchClass = {};
 
         models.tb_product
         .findAll({
