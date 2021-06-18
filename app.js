@@ -3,8 +3,12 @@ const express = require("express");
 
 // Creating our express application
 const app = express();
-const server = require('http').createServer(app); 
+const server = require('http').createServer(app);
+const bodyParser = require("body-parser");
 const port = process.env.PORT || 8080;
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // set the view engine to ejs
 app.set('view engine','ejs');
@@ -28,6 +32,9 @@ app.use(function (req, res, next) {
     // Pass to next layer of middleware
     next();
 });
+
+// Router API
+require('./routes/routerAPI.js')(app);
 
 // Router Web // use res.render to load up an ejs view file
 require('./routes/routerWeb.js')(app);

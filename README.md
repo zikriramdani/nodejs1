@@ -11,7 +11,7 @@ Run `npm run dev` for a dev server. Navigate to `http://localhost:8080/`. The ap
 ## Cara menjalankan Aplikasi : 
 
 - Simpan Project di /htdocs (kalau pake xampp)
-- import database (db_nodejs.sql)
+- import database (db_nodejs1.sql / npx sequelize-cli db:migrate)
 - buka folder project, jalankan "npm install" di dalam terminal/cmd
 - buka folder project, copykan .env-example, menjadi .env
 - isi DB_DATABASE, DB_USERNAME, DB_PASSWORD, sesuaikan dengan settingan database kamu
