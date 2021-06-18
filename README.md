@@ -1,4 +1,4 @@
-![result](https://github.com/zikriramdani/piri-aplikasi-indonesia/blob/master/screencapture-piri-aplikasi-indonesia.png)
+![result](https://github.com/zikriramdani/nodejs1/blob/main/screencapture.png)
 
 # Aplikasi Sederhana Node Js
 
