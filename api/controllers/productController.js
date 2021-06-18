@@ -3,11 +3,16 @@ const models = require("../../models");
 module.exports = {
     // Read Product
     readProduct(req, res, next) {
+        const limit = 10
+        const offset = 0 + (req.body.page - 1) * limit
+
         models.tb_product
-        .findAll({
+        .findAndCountAll({
             order: [
               ['createdAt', 'DESC']
             ],
+            offset: offset,
+            limit: limit,
             // attributes: ["image", "name", "description", "price"],
         })
         .then(tb_products => {

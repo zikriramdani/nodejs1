@@ -14,15 +14,13 @@ module.exports = async function (app) {
     // Home
     app.get('/', async function(req, res) {
         axios
-        .get(process.env.URL + 'productList')
+        .post(process.env.URL + 'productList', {
+            page: '1'
+        })
         .then(dataProduct => {
             res.render('pages/index.ejs', {
                 title: 'Home',
-                product: dataProduct.data.resData,
-                // id:      dataProduct.data.resData[0].id,
-                // name:   dataProduct.data.resData[0].name,
-                // description:   dataProduct.data.resData[0].description,
-                // price:   dataProduct.data.resData[0].price,
+                product: dataProduct.data.resData.rows
             });
         })
         .catch(err => {
@@ -103,12 +101,14 @@ module.exports = async function (app) {
     // Export to XML
     app.get('/exportXML', async function(req, res){
         axios
-        .get(process.env.URL + 'productList')
+        .post(process.env.URL + 'productList', {
+            page: '1'
+        })
         .then(dataProduct => {
             res.set('Content-Type', 'text/xml');
             res.send(o2x({
             '?xml version="1.0" encoding="utf-8"?' : null,
-                clients: { client: dataProduct.data.resData}
+                clients: { client: dataProduct.data.resData.rows}
             }));
         })
         .catch(err => {
@@ -122,7 +122,9 @@ module.exports = async function (app) {
     // Export to Excel
     app.get('/exportExcel', async function(req, res){
         axios
-        .get(process.env.URL + 'productList')
+        .get(process.env.URL + 'productList', {
+            page: '1'
+        })
         .then(dataProduct => {
             // Create the excel report.
             // This function will return Buffer
@@ -131,7 +133,7 @@ module.exports = async function (app) {
                     {
                         name: 'Report', // <- Specify sheet name (optional)
                         specification: dataProduct.data.resData, // <- Report specification
-                        data: dataProduct.data.resData // <-- Report data
+                        data: dataProduct.data.resData.rows // <-- Report data
                     }
                 ]
             );
