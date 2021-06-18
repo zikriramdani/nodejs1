@@ -118,18 +118,21 @@ module.exports = {
     // Filter limit data
     filterLimitProduct(req, res, next) {
         const { limit } = req.body;
-        
+        const offset = 0;
+
         models.tb_product
         .findAll({
             order: [
                 ['createdAt', 'DESC']
             ],
             limit: limit,
+            offset: offset
         })
         .then(tb_products => {
             if (tb_products) {
                 res.status(200).json({
                     'resCode': 200,
+                    'resDataLimit': limit,
                     'resData': tb_products,
                     'resMessage': 'Successfully'
                 });
