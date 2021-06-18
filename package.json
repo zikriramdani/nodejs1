@@ -1,0 +1,27 @@
+{
+  "name": "nodejs1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "env2": "^2.2.2",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zikriramdani/nodejs1.git"
+  },
+  "author": "Zikri Ramdani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zikriramdani/nodejs1/issues"
+  },
+  "homepage": "https://github.com/zikriramdani/nodejs1#readme"
+}
