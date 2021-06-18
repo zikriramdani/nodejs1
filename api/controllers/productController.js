@@ -121,9 +121,6 @@ module.exports = {
 
         models.tb_product
         .findAll({
-            order: [
-                ['createdAt', 'DESC']
-            ],
             limit: limit
         })
         .then(tb_products => {
