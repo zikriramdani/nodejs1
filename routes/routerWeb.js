@@ -19,10 +19,10 @@ module.exports = async function (app) {
             res.render('pages/index.ejs', {
                 title: 'Home',
                 product: dataProduct.data.resData,
-                id:      dataProduct.data.resData[0].id,
-                name:   dataProduct.data.resData[0].name,
-                description:   dataProduct.data.resData[0].description,
-                price:   dataProduct.data.resData[0].price,
+                // id:      dataProduct.data.resData[0].id,
+                // name:   dataProduct.data.resData[0].name,
+                // description:   dataProduct.data.resData[0].description,
+                // price:   dataProduct.data.resData[0].price,
             });
         })
         .catch(err => {
