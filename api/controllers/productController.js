@@ -1,25 +1,42 @@
 const models = require("../../models");
 
+// Pagination
+const getPagination = (page, size) => {
+    const limit = size ? +size : 3;
+    const offset = page ? page * limit : 0;
+  
+    return { limit, offset };
+};
+const getPagingData = (data, page, limit) => {
+    const { count: totalItems, rows: getData } = data;
+    const currentPage = page ? +page : 0;
+    const totalPages = Math.ceil(totalItems / limit);
+  
+    return { totalItems, getData, totalPages, currentPage };
+};
+
 module.exports = {
     // Read Product
     readProduct(req, res, next) {
-        const limit = 10
-        const offset = 0 + (req.body.page - 1) * limit
+        // const limit = 10
+        // const offset = 0 + (req.body.page - 1) * limit
+        const { page, size } = req.body;
+        const { limit, offset } = getPagination(page, size);
 
         models.tb_product
         .findAndCountAll({
             order: [
               ['createdAt', 'DESC']
             ],
-            offset: offset,
-            limit: limit,
+            offset,
+            limit
             // attributes: ["image", "name", "description", "price"],
         })
         .then(tb_products => {
             if (tb_products) {
                 res.status(200).json({
                     'resCode': 200,
-                    'resData': tb_products,
+                    'resData': getPagingData(tb_products,page, limit),
                     'resMessage': 'Successfull'
                 })
             }

@@ -14,13 +14,11 @@ module.exports = async function (app) {
     // Home
     app.get('/', async function(req, res) {
         axios
-        .post(process.env.URL + 'productList', {
-            page: '1'
-        })
+        .get(process.env.URL + 'productList')
         .then(dataProduct => {
             res.render('pages/index.ejs', {
                 title: 'Home',
-                product: dataProduct.data.resData.rows
+                product: dataProduct.data.resData.getData
             });
         })
         .catch(err => {
@@ -101,14 +99,12 @@ module.exports = async function (app) {
     // Export to XML
     app.get('/exportXML', async function(req, res){
         axios
-        .post(process.env.URL + 'productList', {
-            page: '1'
-        })
+        .get(process.env.URL + 'productList')
         .then(dataProduct => {
             res.set('Content-Type', 'text/xml');
             res.send(o2x({
             '?xml version="1.0" encoding="utf-8"?' : null,
-                clients: { client: dataProduct.data.resData.rows}
+                clients: { client: dataProduct.data.resData.getData}
             }));
         })
         .catch(err => {
@@ -122,9 +118,7 @@ module.exports = async function (app) {
     // Export to Excel
     app.get('/exportExcel', async function(req, res){
         axios
-        .get(process.env.URL + 'productList', {
-            page: '1'
-        })
+        .get(process.env.URL + 'productList')
         .then(dataProduct => {
             // Create the excel report.
             // This function will return Buffer
@@ -133,7 +127,7 @@ module.exports = async function (app) {
                     {
                         name: 'Report', // <- Specify sheet name (optional)
                         specification: dataProduct.data.resData, // <- Report specification
-                        data: dataProduct.data.resData.rows // <-- Report data
+                        data: dataProduct.data.resData.getData // <-- Report data
                     }
                 ]
             );
