@@ -16,7 +16,7 @@ module.exports = async function (app) {
         const pages = req.body.page || req.query.page;
 
         axios
-        .get(process.env.URL + 'productList', {
+        .post(process.env.URL + 'productList', {
             page: pages
         })
         .then(dataProduct => {
@@ -103,7 +103,7 @@ module.exports = async function (app) {
     // Export to XML
     app.get('/exportXML', async function(req, res){
         axios
-        .get(process.env.URL + 'productList')
+        .post(process.env.URL + 'productList')
         .then(dataProduct => {
             res.set('Content-Type', 'text/xml');
             res.send(o2x({
@@ -122,7 +122,7 @@ module.exports = async function (app) {
     // Export to Excel
     app.get('/exportExcel', async function(req, res){
         axios
-        .get(process.env.URL + 'productList')
+        .post(process.env.URL + 'productList')
         .then(dataProduct => {
             // Create the excel report.
             // This function will return Buffer
