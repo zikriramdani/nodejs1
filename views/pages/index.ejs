@@ -11,27 +11,19 @@
         <div class="col-md-7">
             <div class="row">
                 <div class="col-md-4 mb-3">
-                    <div class="btn-group w-100">
-                        <button type="button" class="btn dropdown-toggle text-left" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Kategori
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Kategori 1</a>
-                        </div>
-                    </div>
+                    <select class="custom-select">
+                        <option selected>Kategori</option>
+                        <option value="1">Kategori 1</option>
+                        <option value="2">Kategori 2</option>
+                    </select>
                 </div>
                 <div class="col-md-4 mb-3">
-                    <div class="btn-group w-100">
-                        <button type="button" class="btn dropdown-toggle text-left" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Jumlah Data
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">10</a>
-                            <a class="dropdown-item" href="#">25</a>
-                            <a class="dropdown-item" href="#">50</a>
-                            <a class="dropdown-item" href="#">100</a>
-                        </div>
-                    </div>
+                    <select class="custom-select">
+                        <option selected>Pages</option>
+                        <% for(let i=0; i < product.totalPages; i++) { %>
+                            <option value="<%= i + 1 %>"><%= i + 1 %></option>
+                        <% } %>
+                    </select>
                 </div>
                 <div class="col-md-4 mb-3">
                     <button type="button" class="btn btn-secondary w-100">Tampilkan</button>
