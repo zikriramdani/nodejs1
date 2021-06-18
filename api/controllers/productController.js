@@ -20,7 +20,7 @@ module.exports = {
     readProduct(req, res, next) {
         // const limit = 10
         // const offset = 0 + (req.body.page - 1) * limit
-        const { page, size } = req.query || req.query;
+        const { page, size } = req.body || req.query;
         const { limit, offset } = getPagination(page, size);
 
         models.tb_product

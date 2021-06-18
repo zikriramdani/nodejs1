@@ -13,9 +13,14 @@ module.exports = async function (app) {
 
     // Home
     app.get('/', async function(req, res) {
+        const pages = req.query.page;
+
         axios
-        .get(process.env.URL + 'productList')
+        .get(process.env.URL + 'productList', {
+            page: pages
+        })
         .then(dataProduct => {
+            console.log('asd', pages)
             res.render('pages/index.ejs', {
                 title: 'Home',
                 product: dataProduct.data.resData
