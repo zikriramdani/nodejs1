@@ -118,13 +118,13 @@ module.exports = {
     // Filter limit data
     filterLimitProduct(req, res, next) {
         const { limit } = req.body;
-
+        
         models.tb_product
         .findAll({
-            limit: limit,
             order: [
                 ['createdAt', 'DESC']
-            ]
+            ],
+            limit: limit,
         })
         .then(tb_products => {
             if (tb_products) {
