@@ -12,7 +12,7 @@ Run `npm run dev` for a dev server. Navigate to `http://localhost:8080/`. The ap
 
 - Simpan Project di /htdocs (kalau pake xampp)
 - import database (db_nodejs.sql)
-- jalankan "npm install" di dalam terminal/cmd
+- buka folder project, jalankan "npm install" di dalam terminal/cmd
 - buka folder project, copykan .env-example, menjadi .env
 - isi DB_DATABASE, DB_USERNAME, DB_PASSWORD, sesuaikan dengan settingan database kamu
 - di dalam directory project buka terminal, ketikan "npm run dev"
