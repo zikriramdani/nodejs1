@@ -7,5 +7,6 @@ module.exports = async function (app) {
 	app.get("/api/v1/productList", productController.readProduct);
 	app.put("/api/v1/product/:id", productController.updateProduct);
 	app.delete("/api/v1/product/:id", productController.deleteProduct);
+	app.get("/api/v1/productListLimit", productController.filterLimitProduct);
 
 }

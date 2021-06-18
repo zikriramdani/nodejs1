@@ -113,6 +113,35 @@ module.exports = {
                 'resMessage': err
             });
         });
-    }
+    },
+
+    // Filter limit data
+    filterLimitProduct(req, res, next) {
+        const { limit } = req.body;
+        var searchClass = {};
+
+        models.tb_product
+        .findAll({
+            limit: limit,
+            order: [
+                ['createdAt', 'DESC']
+            ]
+        })
+        .then(tb_products => {
+            if (tb_products) {
+                res.status(200).json({
+                    'resCode': 200,
+                    'resData': tb_products,
+                    'resMessage': 'Successfully'
+                });
+            };
+        })
+        .catch(err => {
+            res.status(201).json({
+                'resCode': 201,
+                'resMessage': err
+            })
+        })
+    },
 
 }
