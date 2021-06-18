@@ -18,10 +18,14 @@
                     </select>
                 </div>
                 <div class="col-md-4 mb-3">
-                    <select class="custom-select">
+                    <select class="custom-select" name="pages" onchange="handleSelect(this.value)">
                         <option selected>Pages</option>
                         <% for(let i=0; i < product.totalPages; i++) { %>
-                            <option value="<%= i + 1 %>"><%= i + 1 %></option>
+                            <option value="<%= i %>">
+                                <a href="/?page=<%= i %>">
+                                    <%= i + 1 %>
+                                </a>
+                            </option>
                         <% } %>
                     </select>
                 </div>
@@ -152,5 +156,11 @@
     </div>
 
 </div>
+
+<script>
+    function handleSelect(id) {
+        window.location.href = '/?page=' + id; 
+    }
+</script>
 
 <%- include('../layout/footer'); %>
