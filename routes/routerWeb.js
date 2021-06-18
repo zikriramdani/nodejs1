@@ -18,7 +18,7 @@ module.exports = async function (app) {
         .then(dataProduct => {
             res.render('pages/index.ejs', {
                 title: 'Home',
-                product: dataProduct.data.resData.getData
+                product: dataProduct.data.resData
             });
         })
         .catch(err => {
