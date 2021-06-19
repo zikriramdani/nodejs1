@@ -19,13 +19,10 @@
                 </div>
                 <div class="col-md-4 mb-3">
                     <select onchange="handleSelect(this.value)" class="custom-select">
-                        <option
-                        selected
-                        value="">
+                        <option value="8">
                             Jumlah data
                         </option>
-                        <option
-                        value="10">
+                        <option value="10">
                             10
                         </option>
                         <option
@@ -208,10 +205,12 @@
 
 </div>
 
-<script type="text/javascript" >
+<script>
     async function handleSelect(values) {
-        window.location.href = '/?limits=' + values;
-    };
+        $(document).ready(async function(){
+            window.location.href = '/?limits=' + values;
+        });
+    }
  </script>
 
 <%- include('../layout/footer'); %>
