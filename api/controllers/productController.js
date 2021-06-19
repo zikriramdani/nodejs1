@@ -18,8 +18,8 @@ const getPagingData = (data, page, limit) => {
 module.exports = {
     // Read Product
     readProduct(req, res, next) {
-        const { page, size } = req.body || req.query;
-        const { limit, offset } = getPagination(page, size);
+        const { page, limits } = req.query;
+        const { limit, offset } = getPagination(page, limits);
 
         models.tb_product
         .findAndCountAll({

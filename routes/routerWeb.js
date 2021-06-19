@@ -13,12 +13,11 @@ module.exports = async function (app) {
 
     // Home
     app.get('/', async function(req, res) {
-        const pages = req.body.page || req.query.page;
+        const pages = req.body.page || req.query.page || 0;
+        const limits = req.body.limits || req.query.limits || 8;
 
         axios
-        .post(process.env.URL + 'productList', {
-            page: pages
-        })
+        .post(process.env.URL + 'productList' + '/?pages=' + pages + '&limits=' + limits)
         .then(dataProduct => {
             res.render('pages/index.ejs', {
                 title: 'Home',
