@@ -17,7 +17,7 @@ module.exports = async function (app) {
         const limits = req.body.limits || req.query.limits || 8;
 
         axios
-        .post(process.env.URL + 'productList' + '/?pages=' + pages + '&limits=' + limits)
+        .post(process.env.URL + 'productList' + '/?page=' + pages + '&limits=' + limits)
         .then(dataProduct => {
             res.render('pages/index.ejs', {
                 title: 'Home',
